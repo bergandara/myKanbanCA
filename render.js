@@ -1,7 +1,9 @@
+const { ipcRenderer } = require('electron');
+
 document.getElementById('kanban-board').addEventListener('click', () => {
-    // Code to open Kanban Board window
+    ipcRenderer.send('open-kanban-window');
 });
 
 document.getElementById('pomodoro-timer').addEventListener('click', () => {
-    // Code to open Pomodoro Timer window
+    ipcRenderer.send('open-pomodoro-window');
 });
