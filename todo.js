@@ -1,18 +1,23 @@
+// Get the form, input, and todo-lane elements
 const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const todoLane = document.getElementById("todo-lane");
 
+// Add a submit event listener to the form element
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const value = input.value;
 
+    // If the input is empty, don't create a new task
     if (!value) return;
 
+    // Create a new task element and set its properties
     const newTask = document.createElement("p");
     newTask.classList.add("task");
     newTask.setAttribute("draggable", "true");
     newTask.innerText = value;
 
+    // Add dragstart and dragend event listeners to the new task element
     newTask.addEventListener("dragstart", () => {
         newTask.classList.add("is-dragging");
     });
@@ -21,8 +26,10 @@ form.addEventListener("submit", (e) => {
         newTask.classList.remove("is-dragging");
     });
 
+    // Append the new task element to the todo-lane
     todoLane.appendChild(newTask);
 
+    // Clear the input value
     input.value = "";
 });
 

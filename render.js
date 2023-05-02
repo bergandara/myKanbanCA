@@ -1,10 +1,14 @@
 const { ipcRenderer } = require('electron');
 
+//function to load the kanban board to the main window
 function loadKanbanBoard() {
   fetch('kanban.html')
     .then((response) => response.text())
     .then((html) => {
+      //replace the content of the current window with the Kanban board html
       document.body.innerHTML = html;
+
+      //Add the kanban board style to the current window
       const kanbanStyles = document.createElement('link');
       kanbanStyles.rel = 'stylesheet';
       kanbanStyles.href = 'kanban.css';
@@ -23,9 +27,10 @@ function loadKanbanBoard() {
       console.warn('Error loading KanbanBoard:', err);
     });
 }
-
+//Add a click event listener to the kanban button
 document.getElementById('kanban-board').addEventListener('click', loadKanbanBoard);
 
+//Add a click event listener to the pomodoro timer
 document.getElementById('pomodoro-timer').addEventListener('click', () => {
   ipcRenderer.send('open-pomodoro-window');
 });
