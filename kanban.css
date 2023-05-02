@@ -1,3 +1,4 @@
+/* ---- RESET/BASIC STYLING ---- */
 * {
     padding: 0;
     margin: 0;
@@ -5,7 +6,9 @@
     font-family: sans-serif;
 
     -ms-overflow-style: none;
+    /* IE and Edge */
     scrollbar-width: none;
+    /* Firefox */
 }
 
 *::-webkit-scrollbar {
@@ -17,19 +20,20 @@
     height: 100vh;
     overflow: scroll;
 
-    background-image: url(https://images.unsplash.com/photo-1535957998253-26ae1ef29506?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRlc2t8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60);
+    background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
     background-position: center;
     background-size: cover;
 }
 
+/* ---- FORM ---- */
 #todo-form {
-    padding: 12px;
+    padding: 32px 32px 0;
 }
 
 #todo-form input {
     padding: 12px;
     margin-right: 12px;
-    width: 225;
+    width: 225px;
 
     border-radius: 4px;
     border: none;
@@ -43,10 +47,11 @@
 
 #todo-form button {
     padding: 12px 32px;
+
     border-radius: 4px;
     border: none;
 
-    box-shadow: 0px 5px 15p rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
     background: #ffffff;
     color: black;
 
@@ -55,14 +60,15 @@
     cursor: pointer;
 }
 
-/* BOARD */
-
+/* ---- BOARD ---- */
 .lanes {
     display: flex;
     align-items: flex-start;
     justify-content: start;
     gap: 16px;
+
     padding: 24px 32px;
+
     overflow: scroll;
     height: 100%;
 }
@@ -92,7 +98,7 @@
 .task {
     background: white;
     color: black;
-    box-shadow: 0p 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 
     padding: 12px;
     border-radius: 4px;
@@ -103,7 +109,7 @@
 
 .is-dragging {
     scale: 1.05;
-    box-shadow: 0p 5px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
     background: rgb(50, 50, 50);
     color: white;
 }
