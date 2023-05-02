@@ -31,17 +31,11 @@ app.on('window-all-closed', () => {
 });
 
 // Create the Kanban window
-ipcMain.on('open-kanban-window', () => {
-    let kanbanWindow = new BrowserWindow({
-        width: 1000,
-        height: 800,
-        webPreferences: {
-            nodeIntegration: true,
-        },
-    });
-
-    kanbanWindow.loadFile('kanban.html');
+ipcMain.on('navigate-to-kanban', (event) => {
+    const window = BrowserWindow.fromWebContents(event.sender);
+    window.loadFile('kanban.html');
 });
+
 
 // Create the Pomodoro window
 ipcMain.on('open-pomodoro-window', () => {
