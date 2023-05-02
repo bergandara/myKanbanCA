@@ -1,6 +1,6 @@
 `use strict`
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
@@ -28,4 +28,30 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
     }
+});
+
+// Create the Kanban window
+ipcMain.on('open-kanban-window', () => {
+    let kanbanWindow = new BrowserWindow({
+        width: 1000,
+        height: 800,
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    });
+
+    kanbanWindow.loadFile('kanban.html');
+});
+
+// Create the Pomodoro window
+ipcMain.on('open-pomodoro-window', () => {
+    let pomodoroWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    });
+
+    pomodoroWindow.loadFile('pomodoro.html');
 });
