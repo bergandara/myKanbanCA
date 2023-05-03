@@ -12,6 +12,8 @@ mainButton.addEventListener('click', () => {
     const {action} = mainButton.dataset;
     if (action === 'start'){
         startTimer();
+    }else{
+        stopTimer();
     }
 });
 
@@ -52,6 +54,14 @@ function startTimer(){
     }, 1000);
 }
 
+function stopTimer(){
+    clearInterval(interval);
+
+    mainButton.dataset.action = 'start';
+    mainButton.textContent = 'start';
+    mainButton.classList.remove('active');
+}
+
 
 function updateClock(){
     const { remainingTime } = timer;
@@ -89,4 +99,5 @@ function handleMode(event){
 
 document.addEventListener('DOMContentLoaded', () => {
     switchMode('pomodoro');
+    stopTimer();
   });
