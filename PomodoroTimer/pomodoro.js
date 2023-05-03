@@ -1,9 +1,11 @@
 const timer = {
-    pomodoro: 25,
-    shortBreak: 5,
-    longBreak: 15,
+    pomodoro: 1,
+    shortBreak: 1,
+    longBreak: 1,
     longBreakInterval: 4,
 }
+
+let interval;
 
 const mainButton = document.getElementById('js-btn');
 mainButton.addEventListener('click', () => {
@@ -11,7 +13,7 @@ mainButton.addEventListener('click', () => {
     if (action === 'start'){
         startTimer();
     }
-})
+});
 
 const modeButtons = document.querySelector('#js-mode-buttons');
 modeButtons.addEventListener('click', handleMode);
@@ -40,7 +42,7 @@ function startTimer(){
     mainButton.classList.add('active');
 
     interval = setInterval(function() {
-        timer.remainingTime = getRemainingtime(endTime);
+        timer.remainingTime = getRemainingTime(endTime);
         updateClock();
 
         total = timer.remainingTime.total;
@@ -70,7 +72,7 @@ function switchMode(mode) {
         seconds:0,
     };
 
-    document.querySelector('button[data-mode').forEach(e => e.classList.remove('active'));
+    document.querySelectorAll('button[data-mode]').forEach(e => e.classList.remove('active'));
     document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
     document.body.style.backgroundColor = `var(--${mode})`;
 
@@ -84,3 +86,7 @@ function handleMode(event){
 
     switchMode(mode);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    switchMode('pomodoro');
+  });
