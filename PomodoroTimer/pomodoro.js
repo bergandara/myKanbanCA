@@ -5,6 +5,14 @@ const timer = {
     longBreakInterval: 4,
 }
 
+const mainButton = document.getElementById('js-btn');
+mainButton.addEventListener('click', () => {
+    const {action} = mainButton.dataset;
+    if (action === 'start'){
+        startTimer();
+    }
+})
+
 const modeButtons = document.querySelector('#js-mode-buttons');
 modeButtons.addEventListener('click', handleMode);
 
@@ -58,9 +66,7 @@ function switchMode(mode) {
         seconds:0,
     };
 
-    document
-        .querySelector('button[data-mode')
-        .forEach(e => e.classList.remove('active'));
+    document.querySelector('button[data-mode').forEach(e => e.classList.remove('active'));
     document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
     document.body.style.backgroundColor = `var(--${mode})`;
 
