@@ -42,5 +42,4 @@ ipcMain.on('navigate-to-kanban', (event) => {
 
   kanbanWindow.loadFile('kanban.html');
 });
-
 console.log("Electron app is running");

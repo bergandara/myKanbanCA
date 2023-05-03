@@ -1,5 +1,15 @@
 const { ipcRenderer } = require('electron');
 
+
+// Load the Kanban board
+document.getElementById('kanban-board').addEventListener('click', loadKanbanBoard);
+
+// Load the Pomodoro Timer
+document.getElementById('pomodoro-timer').addEventListener('click', () => {
+  ipcRenderer.send('navigate-to-pomodoro');
+});
+
+
 //function to load the kanban board to the main window
 function loadKanbanBoard() {
   fetch('kanban.html')
@@ -32,5 +42,5 @@ document.getElementById('kanban-board').addEventListener('click', loadKanbanBoar
 
 //Add a click event listener to the pomodoro timer
 document.getElementById('pomodoro-timer').addEventListener('click', () => {
-  ipcRenderer.send('open-pomodoro-window');
+  ipcRenderer.send('navigate-to-pomodoro');
 });
