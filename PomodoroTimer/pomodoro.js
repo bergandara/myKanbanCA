@@ -35,6 +35,10 @@ function startTimer(){
     let { total } = timer.remainingTime;
     const endTime = Date.parse(new Date()) + total * 1000;
 
+    mainButton.dataset.action = 'stop';
+    mainButton.textContent = 'stop';
+    mainButton.classList.add('active');
+
     interval = setInterval(function() {
         timer.remainingTime = getRemainingtime(endTime);
         updateClock();
