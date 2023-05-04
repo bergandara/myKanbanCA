@@ -5,11 +5,15 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-image: url(https://images.unsplash.com/photo-1593062096033-9a26b09da705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
 }
 
 .container {
     text-align: center;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 40px 60px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -22,7 +26,7 @@ body {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #cacdca;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -32,4 +36,17 @@ button {
     font-size: 16px;
     margin: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #717171;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: none;
 }
