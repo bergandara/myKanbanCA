@@ -4,6 +4,10 @@ const { ipcRenderer } = require('electron');
 // Load the Kanban board
 document.getElementById('kanban-board').addEventListener('click', loadKanbanBoard);
 
+
+// Load the Pomodoro Timer
+document.getElementById('pomodoro-timer').addEventListener('click', loadPomodoroTimer);
+
 // Load the Pomodoro Timer
 document.getElementById('pomodoro-timer').addEventListener('click', () => {
   ipcRenderer.send('navigate-to-pomodoro');
@@ -37,10 +41,27 @@ function loadKanbanBoard() {
       console.warn('Error loading KanbanBoard:', err);
     });
 }
-//Add a click event listener to the kanban button
-document.getElementById('kanban-board').addEventListener('click', loadKanbanBoard);
 
-//Add a click event listener to the pomodoro timer
-document.getElementById('pomodoro-timer').addEventListener('click', () => {
-  ipcRenderer.send('navigate-to-pomodoro');
-});
+//function to load the Pomodoro Timer to the main window
+function loadPomodoroTimer() {
+  fetch('PomodoroTimer/pomodoro.html')
+    .then((response) => response.text())
+    .then((html) => {
+      //replace the content of the current window with the Pomodoro Timer html
+      document.body.innerHTML = html;
+
+      //Add the Pomodoro style to the current window
+      const PomodoroStyles = document.createElement('link');
+      PomodoroStyles.rel = 'stylesheet';
+      PomodoroStyles.href = 'PomodoroTimer/pomodoro.css';
+      document.head.appendChild(kanbanStyles);
+
+      // Load the pomodoro JavaScript files
+      const pomodoroScript = document.createElement('script');
+      pomodoroScript.src = 'PomodoroTimer/pomodoro.js';
+      document.body.appendChild(pomodoroScript);
+    })
+    .catch((err) => {
+      console.warn('Error loading PomodoroTimer:', err);
+    });
+}

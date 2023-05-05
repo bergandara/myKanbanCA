@@ -43,3 +43,17 @@ ipcMain.on('navigate-to-kanban', (event) => {
   kanbanWindow.loadFile('kanban.html');
 });
 console.log("Electron app is running");
+
+// Create the Pomodoro Window
+ipcMain.on('navigate-to-pomodoro', (event) => {
+  let pomodoroWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  pomodoroWindow.loadFile('PomodoroTimer/pomodoro.html');
+});
+console.log("Electron app is running");
