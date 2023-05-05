@@ -55,6 +55,10 @@
     padding: 20px;
     text-align: center;
   }
+
+  #go-back{
+    background: transparent;
+}
   
   .clock {
     margin-top: 50px;

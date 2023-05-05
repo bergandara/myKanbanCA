@@ -36,6 +36,10 @@ function loadKanbanBoard() {
       const todoScript = document.createElement('script');
       todoScript.src = 'todo.js';
       document.body.appendChild(todoScript);
+
+      document.getElementById('go-back').addEventListener('click', loadHomePage);
+
+
     })
     .catch((err) => {
       console.warn('Error loading KanbanBoard:', err);
@@ -51,17 +55,34 @@ function loadPomodoroTimer() {
       document.body.innerHTML = html;
 
       //Add the Pomodoro style to the current window
-      const PomodoroStyles = document.createElement('link');
-      PomodoroStyles.rel = 'stylesheet';
-      PomodoroStyles.href = 'PomodoroTimer/pomodoro.css';
-      document.head.appendChild(kanbanStyles);
+      const pomodoroStyles = document.createElement('link');
+      pomodoroStyles.rel = 'stylesheet';
+      pomodoroStyles.href = 'PomodoroTimer/pomodoro.css';
+      document.head.appendChild(pomodoroStyles);
 
       // Load the pomodoro JavaScript files
       const pomodoroScript = document.createElement('script');
       pomodoroScript.src = 'PomodoroTimer/pomodoro.js';
       document.body.appendChild(pomodoroScript);
+
+      document.getElementById('go-back').addEventListener('click', loadHomePage);
+
     })
     .catch((err) => {
       console.warn('Error loading PomodoroTimer:', err);
+    });
+}
+
+function loadHomePage() {
+  fetch('index.html')
+    .then((response) => response.text())
+    .then((html) => {
+      document.body.innerHTML = html;
+      const indexScript = document.createElement('script');
+      indexScript.src = 'render.js';
+      document.body.appendChild(indexScript);
+    })
+    .catch((err) => {
+      console.warn('Error loading HomePage:', err);
     });
 }
