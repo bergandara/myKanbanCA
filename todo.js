@@ -24,12 +24,33 @@ form.addEventListener("submit", (e) => {
 
     newTask.addEventListener("dragend", () => {
         newTask.classList.remove("is-dragging");
+        //Save tasks to localStorage when a task is moved
+        saveTasks();
     });
 
     // Append the new task element to the todo-lane
     todoLane.appendChild(newTask);
 
+    //Save tasks to localStorage
+    saveTasks();
+
     // Clear the input value
     input.value = "";
 });
 
+// Function to save tasks to localStorage
+function saveTasks() {
+    const todoLane = document.querySelector('#todo-lane');
+    const wipLane = document.querySelector('#wip-lane');
+    const doneLane = document.querySelector('#done-lane');
+    
+    const todoTasks = Array.from(todoLane.querySelectorAll('.task')).map(task => task.innerText);
+    const wipTasks = Array.from(wipLane.querySelectorAll('.task')).map(task => task.innerText);
+    const doneTasks = Array.from(doneLane.querySelectorAll('.task')).map(task => task.innerText);
+
+    const tasks = {todoTasks, wipTasks, doneTasks};
+    
+    localStorage.setItem('kanbanTasks', JSON.stringify(tasks));
+}
+
+window.dispatchEvent(new Event('script-loaded'));

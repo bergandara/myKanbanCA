@@ -37,6 +37,8 @@ function loadKanbanBoard() {
       todoScript.src = 'todo.js';
       document.body.appendChild(todoScript);
 
+      loadTasks();
+
       document.getElementById('go-back').addEventListener('click', loadHomePage);
 
 
@@ -86,3 +88,30 @@ function loadHomePage() {
       console.warn('Error loading HomePage:', err);
     });
 }
+
+// Function to load tasks from localStorage
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem('kanbanTasks'));
+  if (tasks) {
+      const todoLane = document.querySelector('#todo-lane');
+      const wipLane = document.querySelector('#wip-lane');
+      const doneLane = document.querySelector('#done-lane');
+
+      loadTasksInLane(todoLane, tasks.todoTasks);
+      loadTasksInLane(wipLane, tasks.wipTasks);
+      loadTasksInLane(doneLane, tasks.doneTasks);
+  }
+}
+
+// Function to load tasks in a specific lane
+function loadTasksInLane(lane, tasksInLane) {
+  tasksInLane.forEach(task => {
+      const taskElement = document.createElement('p');
+      taskElement.classList.add('task');
+      taskElement.setAttribute('draggable', 'true');
+      taskElement.innerText = task;
+      lane.appendChild(taskElement);
+  });
+}
+
+window.addEventListener('script-loaded', loadTasks);
