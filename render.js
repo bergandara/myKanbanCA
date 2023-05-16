@@ -23,19 +23,26 @@ function loadKanbanBoard() {
       document.body.innerHTML = html;
 
       //Add the kanban board style to the current window
-      const kanbanStyles = document.createElement('link');
-      kanbanStyles.rel = 'stylesheet';
-      kanbanStyles.href = 'kanban.css';
-      document.head.appendChild(kanbanStyles);
+      if (!document.querySelector('script[src="kanban.css"]')) {
+        const kanbanStyles = document.createElement('link');
+        kanbanStyles.rel = 'stylesheet';
+        kanbanStyles.href = 'kanban.css';
+        document.head.appendChild(kanbanStyles);
+      }  
 
-      // Load the kanban JavaScript files
-      const dragScript = document.createElement('script');
-      dragScript.src = 'drag.js';
-      document.body.appendChild(dragScript);
+      
+      // Check if the kanban JavaScript files are already loaded before loading them
+      if (!document.querySelector('script[src="drag.js"]')) {
+        const dragScript = document.createElement('script');
+        dragScript.src = 'drag.js';
+        document.body.appendChild(dragScript);
+      }
 
-      const todoScript = document.createElement('script');
-      todoScript.src = 'todo.js';
-      document.body.appendChild(todoScript);
+      if (!document.querySelector('script[src="todo.js"]')) {
+        const todoScript = document.createElement('script');
+        todoScript.src = 'todo.js';
+        document.body.appendChild(todoScript);
+      }
 
       loadTasks();
 
