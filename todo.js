@@ -17,7 +17,7 @@ function setupTodo() {
         newTask.classList.add("task");
         newTask.setAttribute("draggable", "true");
         newTask.innerText = value;
-
+        
         // Add dragstart and dragend event listeners to the new task element
         newTask.addEventListener("dragstart", () => {
             newTask.classList.add("is-dragging");
@@ -25,15 +25,26 @@ function setupTodo() {
 
         newTask.addEventListener("dragend", () => {
             newTask.classList.remove("is-dragging");
-            saveTasks();
+            
         });
 
         // Append the new task element to the todo-lane
         todoLane.appendChild(newTask);
-
+        saveTasks();
         // Clear the input value
         input.value = "";
     });
+    
 }
 
 setupTodo();
+
+function saveTasks(){
+    let todolane = document.getElementById("todo-lane").innerHTML;
+    let wiplane = document.getElementById("wip-lane").innerHTML;
+    let donelane = document.getElementById("done-lane").innerHTML;
+
+    window.localStorage.setItem("todo-lane", todolane);
+    window.localStorage.setItem("wip-lane", wiplane);
+    window.localStorage.setItem("done-lane", donelane);
+}

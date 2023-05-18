@@ -98,16 +98,20 @@ function loadHomePage() {
 
 // Function to load tasks from localStorage
 function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem('kanbanTasks'));
-  if (tasks) {
-      const todoLane = document.querySelector('#todo-lane');
-      const wipLane = document.querySelector('#wip-lane');
-      const doneLane = document.querySelector('#done-lane');
+  let todoLane = window.localStorage.getItem("todo-lane");
+  let wipLane = window.localStorage.getItem("wip-lane");
+  let doneLane = window.localStorage.getItem("done-lane");
 
-      loadTasksInLane(todoLane, tasks.todoTasks);
-      loadTasksInLane(wipLane, tasks.wipTasks);
-      loadTasksInLane(doneLane, tasks.doneTasks);
+  if(todoLane) {
+      document.getElementById("todo-lane").innerHTML = todoLane;
   }
+  if(wipLane) {
+      document.getElementById("wip-lane").innerHTML = wipLane;
+  }
+  if(doneLane) {
+      document.getElementById("done-lane").innerHTML = doneLane;
+  }
+  
 }
 
 // Function to load tasks in a specific lane
@@ -121,4 +125,4 @@ function loadTasksInLane(lane, tasksInLane) {
   });
 }
 
-window.addEventListener('script-loaded', loadTasks);
+document.addEventListener('DOMContentLoaded', loadTasks);

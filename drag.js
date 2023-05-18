@@ -12,6 +12,7 @@ function setupDrag() {
         task.addEventListener("dragend", () => {
             //Remove the "is-dragging" class from the task when the dragging ends
             task.classList.remove("is-dragging");
+            saveTasks();
         });
     });
 
