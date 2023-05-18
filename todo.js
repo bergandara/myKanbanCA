@@ -17,6 +17,7 @@ function setupTodo() {
         newTask.classList.add("task");
         newTask.setAttribute("draggable", "true");
         newTask.innerText = value;
+        saveTasks();
         
         // Add dragstart and dragend event listeners to the new task element
         newTask.addEventListener("dragstart", () => {
@@ -25,7 +26,7 @@ function setupTodo() {
 
         newTask.addEventListener("dragend", () => {
             newTask.classList.remove("is-dragging");
-            
+            saveTasks();
         });
 
         // Append the new task element to the todo-lane
