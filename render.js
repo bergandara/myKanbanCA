@@ -111,19 +111,7 @@ function loadTasks() {
   if(doneLane) {
       document.getElementById("done-lane").innerHTML = doneLane;
   }
-  alert("To delete a task click it and press ENTER");
   
 }
-
-// // Function to load tasks in a specific lane
-// function loadTasksInLane(lane, tasksInLane) {
-//   tasksInLane.forEach(task => {
-//       const taskElement = document.createElement('p');
-//       taskElement.classList.add('task');
-//       taskElement.setAttribute('draggable', 'true');
-//       taskElement.innerText = task;
-//       lane.appendChild(taskElement);
-//   });
-// }
 
 document.addEventListener('DOMContentLoaded', loadTasks);

@@ -42,7 +42,6 @@ ipcMain.on('navigate-to-kanban', (event) => {
 
   kanbanWindow.loadFile('kanban.html');
 });
-console.log("Electron app is running");
 
 // Create the Pomodoro Window
 ipcMain.on('navigate-to-pomodoro', (event) => {
