@@ -126,3 +126,11 @@
     background: rgb(50, 50, 50);
     color: white;
 }
+
+p {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}

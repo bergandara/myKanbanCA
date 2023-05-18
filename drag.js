@@ -14,6 +14,13 @@ function setupDrag() {
             task.classList.remove("is-dragging");
             saveTasks();
         });
+        task.addEventListener("keydown", (e) => {
+            if (e.keyCode === 13) {
+                task.remove();
+                saveTasks();
+            }
+        });
+        task.setAttribute("tabindex", 0);    
     });
 
     // Add dragover event listener to each swim-lane element
