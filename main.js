@@ -9,6 +9,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
     },
+    
   });
 
   mainWindow.loadFile('index.html');
