@@ -65,6 +65,7 @@ function start() {
         
                     // change the background
                     document.body.classList.remove('break-mode');
+                    alert("Time's up!");
         
                     // delay the UI update
                     setTimeout(() => {
