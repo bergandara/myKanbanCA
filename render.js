@@ -57,7 +57,7 @@ function loadKanbanBoard() {
 
 //function to load the Pomodoro Timer to the main window
 function loadPomodoroTimer() {
-  fetch('PomodoroTimer/pomodoro.html')
+  fetch('PomodoroTimer/npomodoro.html')
     .then((response) => response.text())
     .then((html) => {
       //replace the content of the current window with the Pomodoro Timer html
@@ -66,12 +66,12 @@ function loadPomodoroTimer() {
       //Add the Pomodoro style to the current window
       const pomodoroStyles = document.createElement('link');
       pomodoroStyles.rel = 'stylesheet';
-      pomodoroStyles.href = 'PomodoroTimer/pomodoro.css';
+      pomodoroStyles.href = 'PomodoroTimer/npomodoro.css';
       document.head.appendChild(pomodoroStyles);
 
       // Load the pomodoro JavaScript files
       const pomodoroScript = document.createElement('script');
-      pomodoroScript.src = 'PomodoroTimer/pomodoro.js';
+      pomodoroScript.src = 'PomodoroTimer/npomodoro.js';
       document.body.appendChild(pomodoroScript);
 
       document.getElementById('go-back').addEventListener('click', loadHomePage);
